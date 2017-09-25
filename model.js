@@ -17,7 +17,7 @@ Model.prototype.getData = function (req, callback) {
     console.log(`returned with ${res.body.data.length} features`);
 
     const events = translate(res.body);
-    events.ttl = 60;
+    events.ttl = 172800; //2 days 
     events.metadata = {
       name: 'acled events test',
       description: 'test description'
