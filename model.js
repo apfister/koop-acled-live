@@ -48,15 +48,18 @@ function formatFeature(event) {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [event.longitude, event.latitude]
+      coordinates: [
+        parseFloat(event.longitude),
+        parseFloat(event.latitude)
+      ]
     },
     properties: {
       data_id: event.data_id,
       gwno: event.gwno,
       event_id_cnty: event.event_id_cnty,
       event_id_no_cnty: event.event_id_no_cnty,
-      event_date: event.event_date,
-      year: event.year,
+      event_date: moment(event.event_date).format('YYYY-MM-DD'),
+      year: parseInt(event.year),
       time_precision: event.time_precision,
       event_type: event.event_type,
       actor1: event.actor1,
@@ -70,14 +73,14 @@ function formatFeature(event) {
       admin1: event.admin1,
       admin2: event.admin2,
       admin3: event.admin3,
-      location: event.location,
-      latitude: event.latitude,
+      location: parseFloat(event.location),
+      latitude: parseFloat(event.latitude),
       longitude: event.longitude,
       geo_precision: event.geo_precision,
       source: event.source,
       notes: event.notes,
-      fatalities: event.fatalities,
-      timestamp: event.timestamp
+      fatalities: parseInt(event.fatalities),
+      timestamp: moment.unix(event.timestamp).format('YYYY-MM-DD')
     }
   };
 
