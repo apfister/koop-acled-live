@@ -1,11 +1,9 @@
-const config = require('config');
-
 // clean shutdown on `cntrl + c`
 process.on('SIGINT', () => process.exit(0))
 process.on('SIGTERM', () => process.exit(0))
 
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 // const router = express.Router();
 // const path = require('path');
 
