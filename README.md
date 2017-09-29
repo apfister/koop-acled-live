@@ -1,5 +1,5 @@
 ## Koop ACLED Live
-This is a sample that shows how to use [Koop](http://koopjs.github.io/) and the [ACLED API](http://www.acleddata.com/wp-content/uploads/2013/12/API-User-Guide-August-2017.pdf) to show features from the last week.
+This is a sample that shows how to use [Koop](http://koopjs.github.io/) and the [ACLED API](http://www.acleddata.com/wp-content/uploads/2013/12/API-User-Guide-August-2017.pdf) to show features from the 14 days.
 
 [Live REST Endpoint](https://koop-acled-live.herokuapp.com/acled-live/FeatureServer/0)
 
