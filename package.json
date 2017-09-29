@@ -1,19 +1,28 @@
 {
   "name": "koop-acled-live",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A Koop provider for the ACLED API that returns events from the past 14 days",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "engines": {
-    "node": "6.11.3"
-  },
   "author": "Adam Pfister",
   "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/apfister/koop-acled-live/issues"
+  },
+  "homepage": "https://github.com/apfister/koop-acled-live/#readme",
   "dependencies": {
     "koop": "^3.5.2",
     "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.7.2",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }

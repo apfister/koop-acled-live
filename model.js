@@ -4,33 +4,28 @@ const moment = require('moment');
 function Model (koop) {}
 
 Model.prototype.getData = function (req, callback) {
+  const sevenDaysAgo = moment().subtract(14, 'days').format('YYYY-MM-DD');
 
-  const sevenDaysAgo = moment().subtract(7, 'days').format('YYYY-MM-DD')
+  const apiUrl = `https://api.acleddata.com/acled/read?event_date=${sevenDaysAgo}&event_date_where=%3E=`;
 
-  const api_url = `https://api.acleddata.com/acled/read?event_date=${sevenDaysAgo}&event_date_where=%3E=`;
-
-  request(api_url, (err, res, body) => {
+  request(apiUrl, (err, res, body) => {
     if (err) {
       return callback(err);
     }
 
-    console.log(`returned with ${res.body.data.length} features`);
-
     const events = translate(res.body);
-    events.ttl = 172800; //2 days 
+    // 2 days ttl
+    events.ttl = 172800;
     events.metadata = {
-      name: 'acled events test',
-      description: 'test description'
+      name: 'ACLED Live (past 14 days)',
+      description: 'Events from the ACLED Live API'
     };
 
     callback(null, events);
-
   });
-}
+};
 
-function translate(events) {
-  // const events = JSON.parse(data);
-
+function translate (events) {
   const featureCollection = {
     type: 'FeatureCollection',
     features: []
@@ -42,8 +37,7 @@ function translate(events) {
   return featureCollection;
 }
 
-
-function formatFeature(event) {
+function formatFeature (event) {
   const feature = {
     type: 'Feature',
     geometry: {
@@ -80,7 +74,7 @@ function formatFeature(event) {
       source: event.source,
       notes: event.notes,
       fatalities: parseInt(event.fatalities),
-      timestamp: moment.unix(event.timestamp).format('YYYY-MM-DD')
+      timestamp: event.timestamp
     }
   };
 
